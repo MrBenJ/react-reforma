@@ -1,0 +1,23 @@
+{
+  "name": "reforma",
+  "version": "1.0.0",
+  "description": "Reforma - A Local-State driven approach to form in React",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/MrBenJ/reforma"
+  },
+  "keywords": [
+    "React",
+    "Forms"
+  ],
+  "author": "Ben Junya",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.5.2",
+    "webpack": "^4.20.2"
+  }
+}
