@@ -15,9 +15,6 @@ type ReformaProps = {
   /** @type {|Array<Node>|Node} children - <*Field> elements */
   children: Array<Node> | Node,
 
-  /** @type {Boolean} showSubmitButton - auto adds a submit button */
-  showSubmitButton: boolean,
-
   /** @type {Object} initialValues - an Object containing intiial pre-populated values */
   initialValues?: Object,
 
@@ -52,8 +49,8 @@ class Reforma extends Component<ReformaProps, ReformaState> {
     onSubmit(values);
   }
 
-  onChange = (event: SyntheticEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => {
-    const { currentTarget: { name, value } } = event;
+  onChange = (event: SyntheticInputEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => {
+    const { target: { name, value } } = event;
     const { values } = this.state;
 
     const pendingState = {
