@@ -6,6 +6,7 @@
   "scripts": {
     "test": "ava",
     "dev": "webpack --watch",
+    "watch-prod": "NODE_ENV=production webpack --watch",
     "build": "NODE_ENV=production webpack"
   },
   "repository": {
@@ -21,10 +22,12 @@
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-input-mask": "^2.0.4",
     "webpack": "^4.20.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
