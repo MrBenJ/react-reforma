@@ -1,101 +1,84 @@
-import test from 'ava';
+// @flow
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { JSDOM } from 'jsdom';
+import { shallow, mount } from 'enzyme';
+
 import Reforma from './Reforma';
 import InputField from '../InputField';
 
-Enzyme.configure({ adapter: new Adapter() });
+describe('<Reforma> component tests', () => {
+  it('Renders without crashing', () => {
+    const wrapper = shallow(
+      <Reforma onSubmit={() => {}} />
+    );
+    expect(wrapper).toBeTruthy();
+  });
 
-test.beforeEach(t => {
-  global.window = (new JSDOM(`<html></html>`, { runScripts: "dangerously" })).window;
-  global.document = global.window.document;
+  it('Renders with InputField children', () => {
+    const wrapper = shallow(
+      <Reforma onSubmit={() => {}}>
+        <InputField name="name" />
+      </Reforma>
+    );
 
-});
+    const input = wrapper.find('InputField').dive();
 
-test('Renders without crashing', t => {
-  const wrapper = shallow(
-    <Reforma onSubmit={() => {}} />
-  );
+    expect(input.find('input')).toHaveLength(1);
+    expect(input.find('input').props().name).toBe('name');
+  });
 
-  t.truthy(wrapper);
-});
+  it('Renders multiple DOM elements', () => {
+    const wrapper = mount(
+      <Reforma onSubmit={() => {}}>
+        <div className="foop">
+          <InputField className="hey" name="name" />
+          <span className="deepspan" />
+        </div>
+        <button type="submit">Submit</button>
+      </Reforma>
+    );
 
-test('Renders with InputField children', t => {
-  const wrapper = shallow(
-    <Reforma onSubmit={() => {}}>
-      <InputField name="name" />
-    </Reforma>
-  );
+    const button = wrapper.find('button');
 
-  const input = wrapper.find('InputField').dive();
+    expect(wrapper.find('.foop')).toHaveLength(1);
+    expect(wrapper.find('.deepspan')).toHaveLength(1);
+    expect(wrapper.find('input')).toHaveLength(1);
+    expect(button).toHaveLength(1);
+    expect(button.text()).toBe('Submit');
+  });
 
-  t.is(input.find('input').length, 1);
-  t.is(input.find('input').props().name, 'name');
-});
-
-test('Renders multiple DOM elements', t => {
-  const wrapper = mount(
-    <Reforma onSubmit={() => {}}>
-      <div className="foop">
-        <InputField className="hey" name="name" />
-        <span className="deepspan" />
-      </div>
-      <button type="submit">Submit</button>
-    </Reforma>
-  );
-
-
-  const button = wrapper.find('button');
-
-  t.is(wrapper.find('.foop').length, 1);
-  t.is(wrapper.find('.deepspan').length, 1);
-  t.is(wrapper.find('input').length, 1);
-  t.is(button.length, 1);
-  t.is(button.text(), 'Submit');
-
-});
-
-test('handles change events for multiple inputs', t => {
-  const wrapper = mount(
-    <Reforma onSubmit={() => {}}>
-      <div className="foop">
-        <InputField className="hey" name="name" />
-        <span className="deepspan" />
-        <div>
+  it('handles change events for multiple inputs', () => {
+    const wrapper = mount(
+      <Reforma onSubmit={() => {}}>
+        <div className="foop">
+          <InputField className="hey" name="name" />
+          <span className="deepspan" />
           <div>
-            <InputField name="user" />
+            <div>
+              <InputField name="user" />
+            </div>
           </div>
         </div>
-      </div>
-      <button type="submit">Submit</button>
-    </Reforma>
-  );
+        <button type="submit">Submit</button>
+      </Reforma>
+    );
 
-  wrapper.find('input[name="name"]').simulate('change', {
-    target: {
-      name: 'name',
-      value: 'hello'
-    }
+    wrapper.find('input[name="name"]').simulate('change', {
+      target: {
+        name: 'name',
+        value: 'hello'
+      }
+    });
+
+    expect(wrapper.state().values.name).toBe('hello');
+
+    wrapper.find('input[name="user"]').simulate('change', {
+      target: {
+        name: 'user',
+        value: 'jeff'
+      }
+    });
+
+    expect(wrapper.state().values.user).toBe('jeff');
+
   });
-
-  t.is(wrapper.state().values.name, 'hello');
-
-  wrapper.find('input[name="user"]').simulate('change', {
-    target: {
-      name: 'user',
-      value: 'jeff'
-    }
-  });
-
-  t.is(wrapper.state().values.user, 'jeff');
 });
-
-
-
-test.todo('Deep field onChange events');
-
-test.todo('Submit events');
-
-

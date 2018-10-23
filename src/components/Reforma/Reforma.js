@@ -114,7 +114,6 @@ class Reforma extends Component<ReformaProps, ReformaState> {
 
   componentDidUpdate() {
     const { onValueChange } = this.props;
-    console.log(this.state.values);
     if (onValueChange) {
       onValueChange(this.state.values);
     }
