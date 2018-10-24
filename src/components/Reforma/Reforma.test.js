@@ -69,7 +69,7 @@ describe('<Reforma> component tests', () => {
       }
     });
 
-    expect(wrapper.state().values.name).toBe('hello');
+    expect(wrapper.state().name).toBe('hello');
 
     wrapper.find('input[name="user"]').simulate('change', {
       target: {
@@ -78,7 +78,7 @@ describe('<Reforma> component tests', () => {
       }
     });
 
-    expect(wrapper.state().values.user).toBe('jeff');
+    expect(wrapper.state().user).toBe('jeff');
 
   });
 });

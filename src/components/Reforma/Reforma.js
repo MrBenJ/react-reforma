@@ -32,7 +32,7 @@ class Reforma extends Component<ReformaProps, ReformaState> {
     const { initialValues } = props;
 
     this.state = {
-      values: { ...initialValues }
+      ...initialValues
     };
   }
 
@@ -45,19 +45,15 @@ class Reforma extends Component<ReformaProps, ReformaState> {
     event.preventDefault();
 
     const { onSubmit } = this.props;
-    const { values } = this.state;
-    onSubmit(values);
+    onSubmit(this.state);
   }
 
   onChange = (event: SyntheticInputEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => {
     const { target: { name, value } } = event;
-    const { values } = this.state;
 
     const pendingState = {
-      values: {
-        ...values,
-        [name]: value
-      }
+      ...this.state,
+      [name]: value
     };
 
     this.setState(pendingState);
@@ -71,7 +67,6 @@ class Reforma extends Component<ReformaProps, ReformaState> {
    */
   _cloneChildren = (child: Element<any>) => {
     const { errors } = this.props;
-    const { values } = this.state;
 
     // If there's React element(s) as a child, clone through all the children recursively
     if (child.props.children) {
@@ -90,7 +85,7 @@ class Reforma extends Component<ReformaProps, ReformaState> {
       const { name } = child.props;
       const injectedProps = {
         onChange: this.onChange,
-        value: values[name],
+        value: this.state[name],
         errors: errors[name]
       };
 
@@ -115,7 +110,7 @@ class Reforma extends Component<ReformaProps, ReformaState> {
   componentDidUpdate() {
     const { onValueChange } = this.props;
     if (onValueChange) {
-      onValueChange(this.state.values);
+      onValueChange(this.state);
     }
   }
 }
