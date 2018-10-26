@@ -68,8 +68,35 @@ class Reforma extends Component<ReformaProps, ReformaState> {
   _cloneChildren = (child: Element<any>) => {
     const { errors } = this.props;
 
-    // If there's React element(s) as a child, clone through all the children recursively
-    if (child.props.children) {
+    if (!child) {
+      return child;
+    }
+
+    if (typeof child === 'function') {
+      const result = child();
+      return React.cloneElement(result, {
+        children: React.Children.map(result.props.children, this._cloneChildren)
+      });
+    }
+
+    // Only inject onChange prop if injectOnChange is true
+    const isFieldComponent = child?.props?.injectOnChange;
+
+    // Found a <*Field> Component. Inject the props.
+    if (isFieldComponent) {
+      const { name } = child.props;
+
+      const injectedProps = {
+        onChange: this.onChange,
+        value: this.state[name],
+        errors: errors[name]
+      };
+      return React.cloneElement(child, injectedProps);
+    }
+
+    // If there's React element(s) as a child(ren):
+    // Clone through all the children recursively
+    if (child?.props?.children) {
       if(React.isValidElement(child.props.children) || Array.isArray(child.props.children)) {
         return React.cloneElement(child, {
           children: React.Children.map(child.props.children, this._cloneChildren)
@@ -77,22 +104,7 @@ class Reforma extends Component<ReformaProps, ReformaState> {
       }
     }
 
-    // Only inject onChange prop if injectOnChange is true
-    const isFieldComponent = child.props.injectOnChange;
-
-    // Found a <*Field> Component. Inject the props.
-    if (isFieldComponent) {
-      const { name } = child.props;
-      const injectedProps = {
-        onChange: this.onChange,
-        value: this.state[name],
-        errors: errors[name]
-      };
-
-      return React.cloneElement(child, injectedProps);
-    }
-
-    // If all else fails, just clone the element and call it a day. Maybe have a beer or 6.
+    // If all else fails, just clone the element
     return React.cloneElement(child);
   }
 
