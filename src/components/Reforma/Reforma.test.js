@@ -9,7 +9,7 @@ describe('<Reforma> component tests', () => {
   it('Renders without crashing', () => {
     const wrapper = shallow(
       <Reforma onSubmit={() => {}}>
-        <div>Child</div>
+        <div>Child so flow does not get angry with me :)</div>
       </Reforma>
     );
     expect(wrapper).toBeTruthy();

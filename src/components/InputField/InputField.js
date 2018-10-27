@@ -18,7 +18,7 @@ export default function InputField(props: InputFieldProps) {
     className,
     label,
     placeholder,
-    errors,
+    error,
     value,
     name,
     mask,
@@ -42,9 +42,9 @@ export default function InputField(props: InputFieldProps) {
       {mask ? (
         <InputMask mask={mask} {...fieldProps} {...rest} />
       ) : (
-        <input type={type} {...fieldProps} {...rest} />
+        <input {...fieldProps} {...rest} />
       )}
-      {errors && <span className="error">{errors}</span>}
+      {error && <span>{error}</span>}
     </>
   );
 }

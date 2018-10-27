@@ -58,10 +58,10 @@ describe('<InputField> tests', () => {
   it('renders error span if an error is passed in', () => {
     const wrapper = renderShallow({
       name: 'goodbye',
-      errors: 'Invalid'
+      error: 'Invalid'
     });
 
-    expect(wrapper.find('.error')).toHaveLength(1);
-    expect(wrapper.find('.error').text()).toBe('Invalid');
+    expect(wrapper.find('span')).toHaveLength(1);
+    expect(wrapper.find('span').text()).toBe('Invalid');
   });
 });

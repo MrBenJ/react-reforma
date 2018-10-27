@@ -11,7 +11,7 @@ export type BaseFieldProps = {
   placeholder?: ?string,
 
   /** @type {String} error - Error to show if there's something wrong with the field */
-  errors?: ?string,
+  error?: ?(string|Node),
 
   /** @type {String} name - name/key value of field */
   name: string,

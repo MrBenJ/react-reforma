@@ -89,7 +89,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
       const injectedProps = {
         onChange: this.onChange,
         value: this.state[name],
-        errors: errors[name]
+        error: errors[name]
       };
       return React.cloneElement(child, injectedProps);
     }

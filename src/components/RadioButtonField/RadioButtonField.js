@@ -17,7 +17,7 @@ export default function RadioButtonField(props: RadioButtonFieldProps): Node {
     id,
     label,
     className,
-    errors,
+    error,
     name,
     radioValue,
     value,
@@ -46,7 +46,7 @@ export default function RadioButtonField(props: RadioButtonFieldProps): Node {
         onChange={onChange}
         {...rest}
       />
-      {errors && <span className="error">{errors}</span>}
+      {error && <span>{error}</span>}
     </>
   );
 }
