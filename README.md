@@ -1,6 +1,8 @@
 Reforma
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MrBenJ/react-reforma.svg)](https://greenkeeper.io/)
+
 ## A Local State Driven Approach to Forms in React
 
 Reforma focuses on creating forms quickly and easily, by letting the developer
