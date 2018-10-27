@@ -28,23 +28,24 @@ export default function InputField(props: InputFieldProps) {
   } = props;
 
   const fieldProps = {
+    className,
     placeholder,
+    type,
     value,
     name,
     onChange
   };
 
   return (
-    <div className={className}>
+    <>
       {label && <label htmlFor={name}>{label}</label>}
       {mask ? (
         <InputMask mask={mask} {...fieldProps} {...rest} />
       ) : (
         <input type={type} {...fieldProps} {...rest} />
       )}
-
       {errors && <span className="error">{errors}</span>}
-    </div>
+    </>
   );
 }
 

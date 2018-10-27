@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import type { Element, Node } from 'react';
 
 type ReformaProps = {
@@ -13,7 +13,7 @@ type ReformaProps = {
   onValueChange?: ?(Object) => void,
 
   /** @type {|Array<Node>|Node} children - <*Field> elements */
-  children: Array<Node> | Node,
+  children: Node,
 
   /** @type {Object} initialValues - an Object containing intiial pre-populated values */
   initialValues?: Object,
@@ -26,7 +26,7 @@ type ReformaState = {
   values: Object
 };
 
-class Reforma extends Component<ReformaProps, ReformaState> {
+class Reforma extends PureComponent<ReformaProps, ReformaState> {
   constructor(props: ReformaProps) {
     super(props);
     const { initialValues } = props;

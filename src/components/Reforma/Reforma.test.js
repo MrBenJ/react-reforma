@@ -8,7 +8,9 @@ import InputField from '../InputField';
 describe('<Reforma> component tests', () => {
   it('Renders without crashing', () => {
     const wrapper = shallow(
-      <Reforma onSubmit={() => {}} />
+      <Reforma onSubmit={() => {}}>
+        <div>Child</div>
+      </Reforma>
     );
     expect(wrapper).toBeTruthy();
   });
