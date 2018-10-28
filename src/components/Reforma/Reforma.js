@@ -13,7 +13,7 @@ type ReformaProps = {
   onValueChange?: ?(Object) => void,
 
   /** @type {|Array<Node>|Node} children - <*Field> elements */
-  children: Node,
+  children: Node | () => Node | Array<Node>,
 
   /** @type {Object} initialValues - an Object containing intiial pre-populated values */
   initialValues?: Object,
@@ -41,13 +41,23 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     errors: {}
   }
 
+  /**
+   * Submits the form
+   * @param  {SyntheticEvent} event: SyntheticEvent<HTMLFormElement> The form
+   * @return {undefined}
+   */
   onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    console.log('Reforma onSubmit!');
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
 
+  /**
+   * onChange event to add to ann <*Field> elements
+   * @param  {SyntheticInputEvent} event - The raw React Event
+   * @return {undefined}
+   */
   onChange = (event: SyntheticInputEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => {
     const { target: { name, value } } = event;
 
@@ -73,6 +83,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     }
 
     if (typeof child === 'function') {
+      console.log('hello function');
       const result = child();
       return React.cloneElement(result, {
         children: React.Children.map(result.props.children, this._cloneChildren)

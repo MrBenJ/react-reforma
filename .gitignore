@@ -1,3 +1,11 @@
+# node/npm/etc
 node_modules
+
+# macOS
 .DS_Store
+
+# Compiled source
 lib
+
+# Devtools + Coverage
+coverage
