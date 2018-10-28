@@ -11,23 +11,25 @@ export default function CheckboxField(props: CheckboxFieldProps) {
   const {
     className,
     label,
+    labelProps,
     error,
     name,
     value,
+    injectOnChange,
     ...rest
   } = props;
-
   return (
     <>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && <label htmlFor={name} {...labelProps}>{label}</label>}
       <input
         className={className}
         type="checkbox"
         name={name}
         value={value}
+        checked={Boolean(value)}
         {...rest}
       />
-      {/* TODO: Add checked state */}
+      { error && <span>{error}</span>}
     </>
   );
 }
@@ -35,5 +37,6 @@ export default function CheckboxField(props: CheckboxFieldProps) {
 CheckboxField.defaultProps = {
   onChange: () => {},
   value: '',
-  injectOnChange: true
+  injectOnChange: true,
+  labelProps: {}
 };

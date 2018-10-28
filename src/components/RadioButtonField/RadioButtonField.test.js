@@ -38,4 +38,15 @@ describe('<RadioButtonField>', () => {
     expect(wrapper.find('label')).toHaveLength(1);
     expect(wrapper.find('.my-label')).toHaveLength(1);
   });
+
+  it('Renders label props', () => {
+    const wrapper = renderShallow({
+      name: 'card',
+      value: 'x',
+      label: 'X card',
+      labelProps: { id: 'secret_card_value'}
+    });
+
+    expect(wrapper.find('#secret_card_value')).toHaveLength(1);
+  })
 });

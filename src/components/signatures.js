@@ -4,6 +4,9 @@ export type BaseFieldProps = {
   /** @type {String} label - If present, add a label tag before the field  */
   label?: ?string | Node,
 
+  /** @type {Object} - props to pass to label if one is present */
+  labelProps?: ?Object,
+
   /** @type {String} className - Class for element */
   className?: ?string,
 

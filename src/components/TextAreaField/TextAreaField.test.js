@@ -36,4 +36,16 @@ describe('<TextAreaField> tests', () => {
     expect(wrapper.find('textarea').props().value).toBe('Hello');
     expect(wrapper.find('span')).toHaveLength(1);
   });
+
+  it('Renders labels with labelProps object', () => {
+    const wrapper = shallow(
+      <TextAreaField
+        name="message"
+        label="Message"
+        labelProps={{ id: 'happy_times' }}
+      />
+    );
+
+    expect(wrapper.find('label#happy_times')).toHaveLength(1);
+  });
 });

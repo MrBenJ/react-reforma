@@ -16,7 +16,15 @@ type SelectFieldProps = {
 } & BaseFieldProps;
 
 export default function SelectField(props: SelectFieldProps): Node {
-  const { className, children, onChange, value, name, label, error } = props;
+  const {
+    className,
+    children,
+    onChange,
+    value,
+    name,
+    label,
+    labelProps,
+    error } = props;
   let generatedChildren = null;
 
   if (Array.isArray(children)) {
@@ -32,7 +40,7 @@ export default function SelectField(props: SelectFieldProps): Node {
 
   return (
     <>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && <label htmlFor={name} {...labelProps}>{label}</label>}
       <select className={className} name={name} onChange={onChange} value={value}>
         {generatedChildren || children}
       </select>
@@ -43,5 +51,6 @@ export default function SelectField(props: SelectFieldProps): Node {
 SelectField.defaultProps = {
   injectOnChange: true,
   value: '',
-  onChange: () => {}
+  onChange: () => {},
+  labelProps: {}
 };

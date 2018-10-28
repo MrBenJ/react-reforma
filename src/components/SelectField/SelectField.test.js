@@ -61,4 +61,20 @@ describe('<SelectField> tests', () => {
 
     expect(wrapper.find('option')).toHaveLength(4);
   });
+
+  it('Renders labelProps', () => {
+    const wrapper = shallow(
+      <SelectField
+        name="select"
+        label="Select something"
+        labelProps={{ className: 'labelerino'}}>
+        <option value="value">Val</option>
+        <option value="other">Other</option>
+      </SelectField>
+    );
+
+    expect(wrapper.find('.labelerino')).toHaveLength(1);
+  });
+
+
 });

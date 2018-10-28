@@ -48,7 +48,6 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
    */
   onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('Reforma onSubmit!');
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
@@ -59,10 +58,17 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
    * @return {undefined}
    */
   onChange = (event: SyntheticInputEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => {
-    const { target: { name, value } } = event;
+    const { target: { name, value, type, checked} } = event;
+
+    // If the value is coming from a checkbox, typecast it to a Boolean
+    if(type === 'checkbox') {
+      this.setState({
+        [name]: Boolean(checked)
+      });
+      return;
+    }
 
     const pendingState = {
-      ...this.state,
       [name]: value
     };
 
@@ -83,7 +89,6 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     }
 
     if (typeof child === 'function') {
-      console.log('hello function');
       const result = child();
       return React.cloneElement(result, {
         children: React.Children.map(result.props.children, this._cloneChildren)

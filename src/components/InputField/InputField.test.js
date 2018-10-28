@@ -64,4 +64,16 @@ describe('<InputField> tests', () => {
     expect(wrapper.find('span')).toHaveLength(1);
     expect(wrapper.find('span').text()).toBe('Invalid');
   });
+
+  it('renders label props', () => {
+    const wrapper = renderShallow({
+      name: 'hi',
+      label:'Heyo',
+      labelProps: {className: 'joe' }
+    });
+
+    expect(wrapper.find('.joe')).toHaveLength(1);
+  });
+
+
 });

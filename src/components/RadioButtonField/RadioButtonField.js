@@ -16,6 +16,7 @@ export default function RadioButtonField(props: RadioButtonFieldProps): Node {
   const {
     id,
     label,
+    labelProps,
     className,
     error,
     name,
@@ -35,7 +36,7 @@ export default function RadioButtonField(props: RadioButtonFieldProps): Node {
 
   return (
     <>
-      {label && <label htmlFor={id}>{labelElement || label}</label>}
+      {label && <label htmlFor={id} {...labelProps}>{labelElement || label}</label>}
       <input
         id={id}
         className={className}
@@ -54,5 +55,6 @@ export default function RadioButtonField(props: RadioButtonFieldProps): Node {
 RadioButtonField.defaultProps = {
   value: '',
   injectOnChange: true,
-  onChange: () => {}
+  onChange: () => {},
+  labelProps: {}
 };

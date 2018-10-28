@@ -17,6 +17,7 @@ export default function InputField(props: InputFieldProps) {
     type,
     className,
     label,
+    labelProps,
     placeholder,
     error,
     value,
@@ -38,7 +39,7 @@ export default function InputField(props: InputFieldProps) {
 
   return (
     <>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && <label htmlFor={name} {...labelProps}>{label}</label>}
       {mask ? (
         <InputMask mask={mask} {...fieldProps} {...rest} />
       ) : (
@@ -53,5 +54,6 @@ InputField.defaultProps = {
   value: '',
   type: 'text',
   injectOnChange: true,
-  onChange: () => {}
+  onChange: () => {},
+  labelProps: {}
 };

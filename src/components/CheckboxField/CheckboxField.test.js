@@ -8,7 +8,6 @@ describe('<CheckboxField> tests', () => {
     const wrapper = shallow(
       <CheckboxField name="one" />
     );
-
     expect(wrapper.find('input')).toHaveLength(1);
   });
 
@@ -20,13 +19,14 @@ describe('<CheckboxField> tests', () => {
         label="horses"
         value="are"
         id="going"
+        onChange={() => {}}
         data-crazy="haywire"
       />
     );
     const inputElProps = wrapper.find('input').props();
     expect(inputElProps).toEqual({
+      checked: true,
       className: 'my',
-      injectOnChange: true,
       onChange: jasmine.any(Function),
       type: 'checkbox',
       name: 'help',
@@ -50,7 +50,19 @@ describe('<CheckboxField> tests', () => {
         label={<div className="its-a-me">Mario!</div>}
       />
     );
-
     expect(wrapper.find('.its-a-me')).toHaveLength(1);
   });
+
+  it('Passes in labelProps', () => {
+    const wrapper = shallow(
+      <CheckboxField
+        name="remember"
+        label="Remember username?"
+        labelProps={{className: 'foo'}}
+      />
+    );
+
+    expect(wrapper.find('.foo')).toHaveLength(1);
+  });
+
 });
