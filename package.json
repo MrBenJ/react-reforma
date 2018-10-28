@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack --watch",
+    "lint": "eslint ./src/**/*.js",
     "flow": "flow",
     "flow-watch": "flow-watch",
     "watch-prod": "NODE_ENV=production webpack --watch",
