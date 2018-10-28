@@ -376,6 +376,14 @@ If you need a group of three radio buttons, create 3 fields with different
 />
 ```
 
+#### Custom Radio Button Labels
+
+If you're hiding the default browser UI for radio buttons and want to use
+something in the `<label>`, you will need to pass in a unique `id` prop to
+  `<RadioButtonField>`, since Reforma cannot use `name` and must resort to an
+`id` to handle click events.
+
+
 ## Tips and Tricks
 
 Reforma doesn't have to be a form. You can use it as a store of key/value pairs
