@@ -386,6 +386,8 @@ something in the `<label>`, you will need to pass in a unique `id` prop to
 
 ## Tips and Tricks
 
+### Using `refs`
+
 Reforma doesn't have to be a form. You can use it as a store of key/value pairs
 for user entry by using React `refs`.
 
@@ -436,6 +438,8 @@ If you attach a ref: make sure:
    `this.reformaForm` or whatever you decide to name your ref.
 2. Do not attempt to manually set the state of `<Reforma>` or force re-renders.
 3. Use the ref as a `read-only` property.
+
+### Retrieving just values (with a ref)
 
 If you want to access the forms `ValuesObject`, you can use:
 ```

@@ -41,6 +41,10 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     errors: {}
   }
 
+  get values() {
+    return this.state;
+  }
+
   /**
    * Submits the form
    * @param  {SyntheticEvent} event: SyntheticEvent<HTMLFormElement> The form
@@ -57,7 +61,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
    * @param  {SyntheticInputEvent} event - The raw React Event
    * @return {undefined}
    */
-  onChange = (event: SyntheticInputEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => {
+  onChange = (event: SyntheticInputEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { target: { name, value, type, checked} } = event;
 
     // If the value is coming from a checkbox, typecast it to a Boolean

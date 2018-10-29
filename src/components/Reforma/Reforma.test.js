@@ -1,4 +1,11 @@
 // @flow
+/* globals
+ describe
+ it
+ xit
+ jest
+ expect
+ */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
@@ -147,12 +154,12 @@ describe('<Reforma> component tests', () => {
         }}
       </Reforma>
     );
-    // const fields = wrapper.find('input[type="text"]');
-    // expect(fields).toHaveLength(2);
+    const fields = wrapper.find('input[type="text"]');
+    expect(fields).toHaveLength(2);
   });
 
   it('Runs onValueChange', () => {
-    const onValueChange = jest.fn()
+    const onValueChange = jest.fn();
 
     const wrapper = mount(
       <Reforma onSubmit={()=>{}} onValueChange={onValueChange}>
@@ -168,5 +175,36 @@ describe('<Reforma> component tests', () => {
     });
 
     expect(onValueChange).toHaveBeenCalledWith({ name: 'hey' });
+  });
+
+  it('Gets values with convenience getter', () => {
+    const wrapper = mount(
+      <Reforma onSubmit={() => {}}>
+        <InputField name="name" />
+        <InputField name="job" />
+      </Reforma>
+    );
+
+    wrapper.find('input[name="name"]').simulate('change', {
+      target: {
+        value: 'Tim',
+        name: 'name'
+      }
+    });
+
+    wrapper.find('input[name="job"]').simulate('change', {
+      target: {
+        value: 'Developer',
+        name: 'job'
+      }
+    });
+
+    const instance = wrapper.instance();
+
+    expect(instance.values).toEqual({
+      name: 'Tim',
+      job: 'Developer'
+    });
+
   });
 });
