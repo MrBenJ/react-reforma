@@ -15,7 +15,7 @@ export default function CheckboxField(props: CheckboxFieldProps) {
     error,
     name,
     value,
-    injectOnChange,
+    injectOnChange: ignored,
     ...rest
   } = props;
   return (

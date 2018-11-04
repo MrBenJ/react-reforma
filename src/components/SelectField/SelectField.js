@@ -1,5 +1,5 @@
 // @flow
-import React, { type Node, type Element } from 'react';
+import React, { type Node } from 'react';
 
 import type { BaseFieldProps } from '../signatures';
 
@@ -44,6 +44,7 @@ export default function SelectField(props: SelectFieldProps): Node {
       <select className={className} name={name} onChange={onChange} value={value}>
         {generatedChildren || children}
       </select>
+      {error && <span>{error}</span>}
     </>
   );
 }

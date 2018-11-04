@@ -5,7 +5,7 @@
  xit
  jest
  expect
- */
+*/
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
@@ -120,9 +120,7 @@ describe('<Reforma> component tests', () => {
   xit('runs onSubmit', () => {
     // TODO: Fix this test.
     // Find why onSubmit isn't running with simulated events
-    const onSubmit = values => {
-      console.log('onSubmit prop', values);
-    };
+    const onSubmit = () => {};
 
     const wrapper = mount(
       <Reforma onSubmit={onSubmit}>

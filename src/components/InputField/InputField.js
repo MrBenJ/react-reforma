@@ -12,7 +12,7 @@ type InputFieldProps = {
 
 } & BaseFieldProps;
 
-export default function InputField(props: InputFieldProps) {
+export default function InputField(props: InputFieldProps): Node {
   const {
     type,
     className,
@@ -24,7 +24,7 @@ export default function InputField(props: InputFieldProps) {
     name,
     mask,
     onChange,
-    injectOnChange,
+    injectOnChange: ignored,
     ...rest
   } = props;
 

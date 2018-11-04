@@ -12,7 +12,7 @@ export default function TextAreaField(props: TextAreaFieldProps) {
     name,
     label,
     labelProps,
-    injectOnChange,
+    injectOnChange: ignored,
     onChange,
     value,
     error,

@@ -23,7 +23,7 @@ export default function RadioButtonField(props: RadioButtonFieldProps): Node {
     radioValue,
     value,
     onChange,
-    injectOnChange,
+    injectOnChange: ignored,
     ...rest
   } = props;
 

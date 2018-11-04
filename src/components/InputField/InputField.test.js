@@ -1,6 +1,13 @@
 // @flow
+
+/* global
+  describe
+  it
+  expect
+*/
+
 import React from 'react';
-import Enzyme, { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import InputField from './InputField';
 

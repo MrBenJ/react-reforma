@@ -1,4 +1,11 @@
 // @flow
+
+/* global
+  describe
+  it
+  expect
+  jasmine
+*/
 import React from 'react';
 import { shallow } from 'enzyme';
 
