@@ -51,7 +51,7 @@ update for you using all the performance goodies of `React.PureComponent`.
  _only vanilla React 16_.
 
 * Nest fields as deeply as you want, and style with container elements. Reforma
-  intelligently clones all `<*Field> elements and attaches `onClick`, `value`,
+  intelligently clones all `<*Field>` elements and attaches `onClick`, `value`,
   and shows `errors` if the `errors` prop is shown.
 
 * Fields are built with `React.Fragment`, ensuring the fewest number of DOM
