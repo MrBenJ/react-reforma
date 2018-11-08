@@ -111,7 +111,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
 
       const injectedProps = {
         ...fieldProps,
-        className: classNames(childClassName, fieldProps.className),
+        className: classNames(childClassName, fieldProps?.className),
         onChange: this.onChange,
         value: this.state[name],
         error: errors[name]
