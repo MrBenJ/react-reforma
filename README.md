@@ -116,11 +116,8 @@ yarn add react-reforma
 The default export is the root `Reforma` element
 
 ```js
-
 import Reforma from 'react-reforma';
-
 ```
-
 
 You can also import the form fields here as well:
 
@@ -200,6 +197,44 @@ class MyComponent extends Component {
 export default MyComponent;
 ```
 
+## DRY code with fieldProps
+
+The `<Reforma>` Component also takes in a `fieldProps` Object, which allows you to cut down on some repeated code:
+
+Instead of:
+
+```js
+<Reforma>
+  <InputField className="input-field" name="first_name" placeholder="First Name" />
+  <InputField className="input-field" name="last_name" placeholder="Last Name" />
+  <InputField className="input-field" name="address1" placeholder="Address Line 1" />
+  <InputField className="input-field" name="address2" placeholder="Address Line 2" />
+</Reforma>
+```
+
+You can cut out the repeated "className" prop by using `fieldProps`
+
+```js
+<Reforma fieldProps={{ className: 'input-field' }}>
+  <InputField name="first_name" placeholder="First Name" />
+  <InputField name="last_name" placeholder="Last Name" />
+  <InputField name="address1" placeholder="Address Line 1" />
+  <InputField name="address2" placeholder="Address Line 2" />
+</Reforma>
+```
+
+If an individual component has a `className` prop on it and `fieldProps` with a `className` is passed in, Reforma will respect this and make sure that the individual component gets both the className from its own `className` prop and `fieldProps`
+
+```js
+<Reforma fieldProps={{ className: 'input-field' }}>
+  <InputField className="highlight-red" name="first_name" placeholder="First Name" />
+  <InputField name="last_name" placeholder="Last Name" />
+  <InputField name="address1" placeholder="Address Line 1" />
+  <InputField name="address2" placeholder="Address Line 2" />
+</Reforma>
+```
+
+The example above will have 4 elements with the "input-field" class on it, and the "first_name" input field will also have both "input-field" and "highlight-red" as its class attributes.
 
 ## The `<Reforma>` Component
 
@@ -210,8 +245,10 @@ export default MyComponent;
 | className     | String       | No        | className to pass into the root `<form>` element                                      | undefined       |
 | onSubmit      | Function     | Yes       | Function to use for submitting the form. Returns a `ValuesObject`. More on that later | Required        |
 | onValueChange | Function     | No        | A function that fires whenever a form's field value has been changed.                 | Empty function  |
+| fieldProps    | Object       | No        | Adds object as props to `<*Field>` components                                         | {} Empty Object |
 | initialValues | ValuesObject | No        | The initial values for when the form constructs.                                      | {} Empty Object |
 | errors        | ErrorsObject | No        | Creates Errors. More on this later                                                    | {} Empty Object |
+
 
 ### `ValuesObject` and `ErrorsObject`
 
