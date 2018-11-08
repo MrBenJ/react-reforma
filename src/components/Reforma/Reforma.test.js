@@ -203,6 +203,39 @@ describe('<Reforma> component tests', () => {
       name: 'Tim',
       job: 'Developer'
     });
+  });
 
+  it('injects the "fieldProps" prop into all field components if passed in', () => {
+    const fieldProps = {
+      className: 'input-field',
+      'data-important': 'yes'
+    };
+
+    const wrapper = mount(
+      <Reforma onSubmit={() => {}} fieldProps={fieldProps}>
+        <InputField name="name" />
+        <InputField name="age" />
+      </Reforma>
+    );
+
+    expect(wrapper.find('input[data-important="yes"]')).toHaveLength(2);
+    expect(wrapper.find('input.input-field')).toHaveLength(2);
+  });
+
+  it('respects individual field class names', () => {
+    const fieldProps = {
+      className: 'input-field',
+      'data-important': 'yes'
+    };
+
+    const wrapper = mount(
+      <Reforma onSubmit={() => {}} fieldProps={fieldProps}>
+        <InputField className="first-name-highlight" name="name" />
+        <InputField name="age" />
+      </Reforma>
+    );
+
+    expect(wrapper.find('input.input-field')).toHaveLength(2);
+    expect(wrapper.find('input.first-name-highlight')).toHaveLength(1);
   });
 });

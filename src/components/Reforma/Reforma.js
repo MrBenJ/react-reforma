@@ -1,5 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import type { Element, Node } from 'react';
 
 type ReformaProps = {
@@ -19,12 +20,13 @@ type ReformaProps = {
   initialValues?: Object,
 
   /** @type {Object} Errors to show for fields */
-  errors: Object
+  errors: Object,
+
+  /** @type {Object} props to add to every field element */
+  fieldProps?: ?Object
 };
 
-type ReformaState = {
-  values: Object
-};
+type ReformaState = Object;
 
 class Reforma extends PureComponent<ReformaProps, ReformaState> {
   constructor(props: ReformaProps) {
@@ -38,7 +40,8 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
 
   static defaultProps = {
     initialValues: {},
-    errors: {}
+    errors: {},
+    fieldProps: {}
   }
 
   get values() {
@@ -86,7 +89,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
    * @return {ReactElement<any>}
    */
   _cloneChildren = (child: Element<any>) => {
-    const { errors } = this.props;
+    const { errors, fieldProps } = this.props;
 
     if (!child) {
       return child;
@@ -104,9 +107,11 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
 
     // Found a <*Field> Component. Inject the props.
     if (isFieldComponent) {
-      const { name } = child.props;
+      const { name, className: childClassName } = child.props;
 
       const injectedProps = {
+        ...fieldProps,
+        className: classNames(childClassName, fieldProps.className),
         onChange: this.onChange,
         value: this.state[name],
         error: errors[name]
