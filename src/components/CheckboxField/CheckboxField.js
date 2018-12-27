@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { type Node } from 'react';
 
 import { type BaseFieldProps } from '../signatures';
 
@@ -7,7 +7,7 @@ type CheckboxFieldProps = {
 
 } & BaseFieldProps;
 
-export default function CheckboxField(props: CheckboxFieldProps) {
+export default function CheckboxField(props: CheckboxFieldProps): Node {
   const {
     className,
     label,

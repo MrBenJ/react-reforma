@@ -11,6 +11,7 @@ import { shallow, mount } from 'enzyme';
 
 import Reforma from './Reforma';
 import InputField from '../InputField';
+import CheckboxField from '../CheckboxField';
 
 describe('<Reforma> component tests', () => {
   it('Renders without crashing', () => {
@@ -237,5 +238,25 @@ describe('<Reforma> component tests', () => {
 
     expect(wrapper.find('input.input-field')).toHaveLength(2);
     expect(wrapper.find('input.first-name-highlight')).toHaveLength(1);
+  });
+
+  describe('Working with checkbox fields', () => {
+    it('handles onChange events from a checkbox', () => {
+      const wrapper = mount(
+        <Reforma onSubmit={() => {}}>
+          <CheckboxField name="remember" />
+        </Reforma>
+      );
+
+      wrapper.find('input[type="checkbox"]').simulate('change',{
+        target: {
+          type: 'checkbox',
+          checked: true,
+          name: 'remember'
+        }
+      });
+
+      expect(wrapper.state().remember).toBe(true);
+    });
   });
 });

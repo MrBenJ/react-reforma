@@ -13,7 +13,19 @@
     "flow": "flow",
     "flow-watch": "flow-watch",
     "watch-prod": "NODE_ENV=production webpack --watch",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "prettier": "prettier --write \"src/**/*.js\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write \"src/**/*.js\"",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -55,6 +67,8 @@
     "flow-typed": "^2.5.1",
     "flow-watch": "^1.1.4",
     "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
     "react-addons-test-utils": "^15.6.2",
     "regenerator-runtime": "^0.13.1",
     "webpack-cli": "^3.1.2"

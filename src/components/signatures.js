@@ -1,5 +1,10 @@
 //@flow
 import type { Node } from 'react';
+
+/**
+ * Field properties that live an all <*Field> Components
+ * @type {Object}
+ */
 export type BaseFieldProps = {
   /** @type {String} label - If present, add a label tag before the field  */
   label?: ?string | Node,

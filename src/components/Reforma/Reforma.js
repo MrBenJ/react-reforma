@@ -53,7 +53,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
    * @param  {SyntheticEvent} event: SyntheticEvent<HTMLFormElement> The form
    * @return {undefined}
    */
-  onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
+  onSubmit = (event: SyntheticEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const { onSubmit } = this.props;
     onSubmit(this.state);
@@ -64,7 +64,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
    * @param  {SyntheticInputEvent} event - The raw React Event
    * @return {undefined}
    */
-  onChange = (event: SyntheticInputEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  onChange = (event: SyntheticInputEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     const { target: { name, value, type, checked} } = event;
 
     // If the value is coming from a checkbox, typecast it to a Boolean
@@ -88,7 +88,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
    * @param  {Element<any>} child: Element<any> children passed into React.Children.map
    * @return {ReactElement<any>}
    */
-  _cloneChildren = (child: Element<any>) => {
+  _cloneChildren = (child: Element<any>): Node => {
     const { errors, fieldProps } = this.props;
 
     if (!child) {
@@ -133,7 +133,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     return React.cloneElement(child);
   }
 
-  render() {
+  render(): Node {
     const { children, className } = this.props;
     const InjectedChildren = React.Children.map(children, this._cloneChildren);
 
