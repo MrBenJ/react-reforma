@@ -9,7 +9,7 @@ jobs:
       CC_TEST_REPORTER_ID: ecb6466c24cf3ec414da2ded52051177c2bc648bc2bd1810376d717aa3e90b23
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.2.1
+      - image: circleci/node:8.6.0
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
