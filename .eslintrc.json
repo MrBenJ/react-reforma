@@ -52,6 +52,9 @@
       { "varsIgnorePattern": "[iI]gnored"}
     ],
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "flowtype/generic-spacing": [
+      "off"
+    ]
   }
 }
