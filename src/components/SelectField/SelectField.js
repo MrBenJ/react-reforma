@@ -24,14 +24,14 @@ export default function SelectField(props: SelectFieldProps): Node {
     name,
     label,
     labelProps,
-    error } = props;
+    error
+  } = props;
   let generatedChildren = null;
 
   if (Array.isArray(children)) {
-    generatedChildren =
-      children.map(child => {
-        return typeof child === 'function' ? child() : child;
-      });
+    generatedChildren = children.map(child => {
+      return typeof child === 'function' ? child() : child;
+    });
   }
 
   if (typeof children === 'function') {
@@ -40,8 +40,16 @@ export default function SelectField(props: SelectFieldProps): Node {
 
   return (
     <>
-      {label && <label htmlFor={name} {...labelProps}>{label}</label>}
-      <select className={className} name={name} onChange={onChange} value={value}>
+      {label && (
+        <label htmlFor={name} {...labelProps}>
+          {label}
+        </label>
+      )}
+      <select
+        className={className}
+        name={name}
+        onChange={onChange}
+        value={value}>
         {generatedChildren || children}
       </select>
       {error && <span>{error}</span>}

@@ -11,17 +11,12 @@ import { shallow } from 'enzyme';
 
 import RadioButtonField from './RadioButtonField';
 
-
 describe('<RadioButtonField>', () => {
   // const renderShallow = props => shallow(<RadioButtonField {...props} />);
 
   it('Renders without crashing', () => {
     const wrapper = shallow(
-      <RadioButtonField
-        id="dude"
-        name="first"
-        radioValue="1"
-      />
+      <RadioButtonField id="dude" name="first" radioValue="1" />
     );
 
     expect(wrapper).toBeTruthy();

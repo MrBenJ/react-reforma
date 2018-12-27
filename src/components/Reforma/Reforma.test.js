@@ -93,11 +93,9 @@ describe('<Reforma> component tests', () => {
 
   it('Gracefully handles null or undefined children', () => {
     const wrapper = mount(
-      <Reforma onSubmit={()=>{}}>
+      <Reforma onSubmit={() => {}}>
         {undefined}
-        <div className="hello">
-          I am a div!
-        </div>
+        <div className="hello">I am a div!</div>
         {null}
         <InputField name="name" />
       </Reforma>
@@ -137,7 +135,6 @@ describe('<Reforma> component tests', () => {
       }
     });
     wrapper.find('button[type="submit"]').simulate('click');
-
   });
 
   xit('Can take a child as a function', () => {
@@ -146,8 +143,8 @@ describe('<Reforma> component tests', () => {
 
     const wrapper = mount(
       <Reforma onSubmit={() => {}}>
-        { () => {
-          return ['first_name', 'last_name'].map( name => {
+        {() => {
+          return ['first_name', 'last_name'].map(name => {
             return <InputField key={name} name={name} />;
           });
         }}
@@ -161,7 +158,7 @@ describe('<Reforma> component tests', () => {
     const onValueChange = jest.fn();
 
     const wrapper = mount(
-      <Reforma onSubmit={()=>{}} onValueChange={onValueChange}>
+      <Reforma onSubmit={() => {}} onValueChange={onValueChange}>
         <InputField name="name" />
       </Reforma>
     );
@@ -248,7 +245,7 @@ describe('<Reforma> component tests', () => {
         </Reforma>
       );
 
-      wrapper.find('input[type="checkbox"]').simulate('change',{
+      wrapper.find('input[type="checkbox"]').simulate('change', {
         target: {
           type: 'checkbox',
           checked: true,

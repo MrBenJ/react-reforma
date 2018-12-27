@@ -12,9 +12,7 @@ import { shallow } from 'enzyme';
 import CheckboxField from './CheckboxField';
 describe('<CheckboxField> tests', () => {
   it('Renders without crashing', () => {
-    const wrapper = shallow(
-      <CheckboxField name="one" />
-    );
+    const wrapper = shallow(<CheckboxField name="one" />);
     expect(wrapper.find('input')).toHaveLength(1);
   });
 
@@ -39,7 +37,7 @@ describe('<CheckboxField> tests', () => {
       name: 'help',
       value: 'are',
       id: 'going',
-      'data-crazy': 'haywire',
+      'data-crazy': 'haywire'
     });
 
     const labelEl = wrapper.find('label');
@@ -47,7 +45,6 @@ describe('<CheckboxField> tests', () => {
       htmlFor: 'help',
       children: 'horses'
     });
-
   });
 
   it('Can use an element as a label prop', () => {
@@ -65,11 +62,10 @@ describe('<CheckboxField> tests', () => {
       <CheckboxField
         name="remember"
         label="Remember username?"
-        labelProps={{className: 'foo'}}
+        labelProps={{ className: 'foo' }}
       />
     );
 
     expect(wrapper.find('.foo')).toHaveLength(1);
   });
-
 });

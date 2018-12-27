@@ -73,7 +73,7 @@ describe('<SelectField> tests', () => {
       <SelectField
         name="select"
         label="Select something"
-        labelProps={{ className: 'labelerino'}}>
+        labelProps={{ className: 'labelerino' }}>
         <option value="value">Val</option>
         <option value="other">Other</option>
       </SelectField>
@@ -81,6 +81,4 @@ describe('<SelectField> tests', () => {
 
     expect(wrapper.find('.labelerino')).toHaveLength(1);
   });
-
-
 });

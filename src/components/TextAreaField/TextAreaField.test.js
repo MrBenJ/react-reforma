@@ -11,17 +11,13 @@ import TextAreaField from './TextAreaField';
 
 describe('<TextAreaField> tests', () => {
   it('Renders without crashing', () => {
-    const wrapper = shallow(
-      <TextAreaField name="name" />
-    );
+    const wrapper = shallow(<TextAreaField name="name" />);
 
     expect(wrapper.find('textarea[name="name"]')).toHaveLength(1);
   });
 
   it('Renders labels', () => {
-    const wrapper = shallow(
-      <TextAreaField name="name" label="Message" />
-    );
+    const wrapper = shallow(<TextAreaField name="name" label="Message" />);
 
     expect(wrapper.find('label').props()).toEqual({
       htmlFor: 'name',
@@ -31,11 +27,7 @@ describe('<TextAreaField> tests', () => {
 
   it('Renders errors and values', () => {
     const wrapper = shallow(
-      <TextAreaField
-        name="naaaame"
-        value="Hello"
-        error="Not long enough"
-      />
+      <TextAreaField name="naaaame" value="Hello" error="Not long enough" />
     );
 
     expect(wrapper.find('textarea').props().value).toBe('Hello');

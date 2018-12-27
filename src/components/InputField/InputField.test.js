@@ -11,8 +11,6 @@ import { shallow } from 'enzyme';
 
 import InputField from './InputField';
 
-
-
 describe('<InputField> tests', () => {
   const renderShallow = props => shallow(<InputField {...props} />);
 
@@ -75,12 +73,10 @@ describe('<InputField> tests', () => {
   it('renders label props', () => {
     const wrapper = renderShallow({
       name: 'hi',
-      label:'Heyo',
-      labelProps: {className: 'joe' }
+      label: 'Heyo',
+      labelProps: { className: 'joe' }
     });
 
     expect(wrapper.find('.joe')).toHaveLength(1);
   });
-
-
 });

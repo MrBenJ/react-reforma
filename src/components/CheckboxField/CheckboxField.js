@@ -3,9 +3,7 @@ import React, { type Node } from 'react';
 
 import { type BaseFieldProps } from '../signatures';
 
-type CheckboxFieldProps = {
-
-} & BaseFieldProps;
+type CheckboxFieldProps = {} & BaseFieldProps;
 
 export default function CheckboxField(props: CheckboxFieldProps): Node {
   const {
@@ -20,7 +18,11 @@ export default function CheckboxField(props: CheckboxFieldProps): Node {
   } = props;
   return (
     <>
-      {label && <label htmlFor={name} {...labelProps}>{label}</label>}
+      {label && (
+        <label htmlFor={name} {...labelProps}>
+          {label}
+        </label>
+      )}
       <input
         className={className}
         type="checkbox"
@@ -29,7 +31,7 @@ export default function CheckboxField(props: CheckboxFieldProps): Node {
         checked={Boolean(value)}
         {...rest}
       />
-      { error && <span>{error}</span>}
+      {error && <span>{error}</span>}
     </>
   );
 }

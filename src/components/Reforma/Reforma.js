@@ -14,7 +14,7 @@ type ReformaProps = {
   onValueChange?: ?(Object) => void,
 
   /** @type {|Array<Node>|Node} children - <*Field> elements */
-  children: Node | () => Node | Array<Node>,
+  children: Node | (() => Node | Array<Node>),
 
   /** @type {Object} initialValues - an Object containing intiial pre-populated values */
   initialValues?: Object,
@@ -42,7 +42,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     initialValues: {},
     errors: {},
     fieldProps: {}
-  }
+  };
 
   get values() {
     return this.state;
@@ -57,18 +57,24 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     event.preventDefault();
     const { onSubmit } = this.props;
     onSubmit(this.state);
-  }
+  };
 
   /**
    * onChange event to add to ann <*Field> elements
    * @param  {SyntheticInputEvent} event - The raw React Event
    * @return {undefined}
    */
-  onChange = (event: SyntheticInputEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
-    const { target: { name, value, type, checked} } = event;
+  onChange = (
+    event: SyntheticInputEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ): void => {
+    const {
+      target: { name, value, type, checked }
+    } = event;
 
     // If the value is coming from a checkbox, typecast it to a Boolean
-    if(type === 'checkbox') {
+    if (type === 'checkbox') {
       this.setState({
         [name]: Boolean(checked)
       });
@@ -80,7 +86,7 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     };
 
     this.setState(pendingState);
-  }
+  };
 
   /**
    * A recursive internal method that attaches onChange, value, and errors
@@ -122,16 +128,22 @@ class Reforma extends PureComponent<ReformaProps, ReformaState> {
     // If there's React element(s) as a child(ren):
     // Clone through all the children recursively
     if (child?.props?.children) {
-      if(React.isValidElement(child.props.children) || Array.isArray(child.props.children)) {
+      if (
+        React.isValidElement(child.props.children) ||
+        Array.isArray(child.props.children)
+      ) {
         return React.cloneElement(child, {
-          children: React.Children.map(child.props.children, this._cloneChildren)
+          children: React.Children.map(
+            child.props.children,
+            this._cloneChildren
+          )
         });
       }
     }
 
     // If all else fails, just clone the element
     return React.cloneElement(child);
-  }
+  };
 
   render(): Node {
     const { children, className } = this.props;

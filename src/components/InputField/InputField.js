@@ -5,11 +5,9 @@ import InputMask from 'react-input-mask';
 import type { BaseFieldProps } from '../signatures';
 
 type InputFieldProps = {
-
   type: 'text' | 'password' | 'email' | 'tel' | 'url' | 'number',
 
   mask?: ?string
-
 } & BaseFieldProps;
 
 export default function InputField(props: InputFieldProps): Node {
@@ -39,7 +37,11 @@ export default function InputField(props: InputFieldProps): Node {
 
   return (
     <>
-      {label && <label htmlFor={name} {...labelProps}>{label}</label>}
+      {label && (
+        <label htmlFor={name} {...labelProps}>
+          {label}
+        </label>
+      )}
       {mask ? (
         <InputMask mask={mask} {...fieldProps} {...rest} />
       ) : (

@@ -36,7 +36,11 @@ export default function RadioButtonField(props: RadioButtonFieldProps): Node {
 
   return (
     <>
-      {label && <label htmlFor={id} {...labelProps}>{labelElement || label}</label>}
+      {label && (
+        <label htmlFor={id} {...labelProps}>
+          {labelElement || label}
+        </label>
+      )}
       <input
         id={id}
         className={className}

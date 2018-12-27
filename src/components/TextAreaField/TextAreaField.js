@@ -20,14 +20,11 @@ export default function TextAreaField(props: TextAreaFieldProps) {
   } = props;
   return (
     <>
-      <label htmlFor={name} {...labelProps}>{label}</label>
-      <textarea
-        name={name}
-        value={value}
-        onChange={onChange}
-        {...rest}
-      />
-      { error && <span>{error}</span>}
+      <label htmlFor={name} {...labelProps}>
+        {label}
+      </label>
+      <textarea name={name} value={value} onChange={onChange} {...rest} />
+      {error && <span>{error}</span>}
     </>
   );
 }
