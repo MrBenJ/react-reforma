@@ -1,6 +1,6 @@
 {
   "name": "react-reforma",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Reforma - A Local-State driven approach to form in React",
   "main": "./lib/index.js",
   "author": "Ben Junya",
