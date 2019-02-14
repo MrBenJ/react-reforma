@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "react": "^16.8.2",
-    "react-dom": "^16.7.0",
+    "react-dom": "^16.8.2",
     "react-input-mask": "^2.0.4",
     "webpack": "^4.28.4"
   },
