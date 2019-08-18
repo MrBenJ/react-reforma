@@ -72,6 +72,6 @@
     "prettier": "^1.15.3",
     "react-addons-test-utils": "^15.6.2",
     "regenerator-runtime": "^0.13.1",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.3.7"
   }
 }
