@@ -42,7 +42,7 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-input-mask": "^2.0.4",
-    "webpack": "^4.28.4"
+    "webpack": "^4.41.3"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",
