@@ -65,7 +65,7 @@
     "flow": "^0.2.3",
     "flow-bin": "^0.101.0",
     "flow-typed": "^2.5.1",
-    "flow-watch": "^1.1.4",
+    "flow-watch": "^2.0.0",
     "husky": "^2.0.0",
     "jest": "^23.6.0",
     "lint-staged": "^9.0.0",
